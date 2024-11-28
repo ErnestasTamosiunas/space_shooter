@@ -15,6 +15,9 @@ def main():
 
     # Game loop
     while True:
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                return
         # Filling the screen with solid black
         pygame.Surface.fill(screen, color="black") # Experimenting
 
