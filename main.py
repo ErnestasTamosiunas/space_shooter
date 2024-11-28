@@ -34,12 +34,12 @@ def main():
 
         # Adding player
         player.draw(screen)
+        player.update(dt)
 
         # Refreshing the screen
         pygame.display.flip()
 
-        dt = clock.tick(FPS)
-        #dt = clock.tick(60) / 1000
+        dt = clock.tick(FPS) / 1000
 
 # Ensures that main() is only called when this file is run directly
 if __name__ == "__main__":
