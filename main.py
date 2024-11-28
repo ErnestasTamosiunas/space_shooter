@@ -2,6 +2,7 @@
 # pygame library throughout this file
 import pygame
 from constants import *
+from player import *
 
 def main():
     pygame.init()
@@ -12,10 +13,14 @@ def main():
 
     # Setting up a screen
     screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
-
     # Setting FPS
     clock = pygame.time.Clock()
     dt = 0
+
+    # Player object
+    x = SCREEN_WIDTH / 2
+    y = SCREEN_HEIGHT / 2
+    player = Player(x, y)
 
     # Game loop
     while True:
@@ -26,6 +31,9 @@ def main():
 
         # Filling the screen with solid black
         pygame.Surface.fill(screen, (0, 0, 0))
+
+        # Adding player
+        player.draw(screen)
 
         # Refreshing the screen
         pygame.display.flip()
