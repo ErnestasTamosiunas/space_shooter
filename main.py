@@ -13,16 +13,25 @@ def main():
     # Setting up a screen
     screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
 
+    # Setting FPS
+    clock = pygame.time.Clock()
+    dt = 0
+
     # Game loop
     while True:
+        # Adding game loop window close
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 return
+
         # Filling the screen with solid black
-        pygame.Surface.fill(screen, color="black") # Experimenting
+        pygame.Surface.fill(screen, (0, 0, 0))
 
         # Refreshing the screen
         pygame.display.flip()
+
+        dt = clock.tick(FPS)
+        #dt = clock.tick(60) / 1000
 
 # Ensures that main() is only called when this file is run directly
 if __name__ == "__main__":
