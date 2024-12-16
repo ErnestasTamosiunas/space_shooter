@@ -2,9 +2,10 @@
 # pygame library throughout this file
 import pygame
 from constants import *
-from player import *
+from player import Player
 from asteroid import Asteroid
 from asteroidfield import AsteroidField
+from shot import Shot
 
 def main():
     pygame.init()
@@ -52,6 +53,11 @@ def main():
             if asteroid.colided(player):
                 print("Game over!")
                 exit()
+
+            for shot in shots:
+                if asteroid.colided(shot):
+                    shot.kill()
+                    asteroid.kill()
 
         # Filling the screen with solid black
         screen.fill((0, 0, 0))
