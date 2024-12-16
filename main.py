@@ -23,6 +23,7 @@ def main():
     updatable = pygame.sprite.Group()
     drawable = pygame.sprite.Group()
     asteroids = pygame.sprite.Group()
+    shots = pygame.sprite.Group()
 
     # Asteroids
     Asteroid.containers = (asteroids, updatable, drawable)
@@ -32,6 +33,9 @@ def main():
     # Player object
     Player.containers = (updatable, drawable)
     player = Player(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2)
+
+    # Shots
+    Shot.containers = (shots, updatable, drawable)
 
     # Game loop
     while True:
