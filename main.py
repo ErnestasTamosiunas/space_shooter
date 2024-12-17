@@ -6,6 +6,7 @@ from player import Player
 from asteroid import Asteroid
 from asteroidfield import AsteroidField
 from shot import Shot
+from score import Score
 
 def main():
     pygame.init()
@@ -37,6 +38,11 @@ def main():
 
     # Shots
     Shot.containers = (shots, updatable, drawable)
+    
+    # Score
+    pygame.font.init()
+    font = pygame.font.SysFont('Arial', 30)
+    score = Score()
 
     # Game loop
     while True:
@@ -56,6 +62,7 @@ def main():
 
             for shot in shots:
                 if asteroid.colided(shot):
+                    score.increase_score()
                     shot.kill()
                     asteroid.split()
 
@@ -66,8 +73,9 @@ def main():
         for obj in drawable:
             obj.draw(screen)
 
-        #player.draw(screen)
-        #player.update(dt)
+        # Score represented in white color
+        score_text = font.render(f"Score: {score.get_score()}", True, (255, 255, 255))
+        screen.blit(score_text, (10, 10))
 
         # Refreshing the screen
         pygame.display.flip()
