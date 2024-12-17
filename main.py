@@ -34,7 +34,7 @@ def main():
 
     # Player object
     Player.containers = (updatable, drawable)
-    player = Player(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2)
+    player = Player(PLAYER_START_POSITION[0], PLAYER_START_POSITION[1])
 
     # Shots
     Shot.containers = (shots, updatable, drawable)
@@ -57,8 +57,7 @@ def main():
         
         for asteroid in asteroids:
             if asteroid.colided(player):
-                print("Game over!")
-                exit()
+                player.revive(score)
 
             for shot in shots:
                 if asteroid.colided(shot):
@@ -73,9 +72,11 @@ def main():
         for obj in drawable:
             obj.draw(screen)
 
-        # Score represented in white color
+        # Score & lives represented in white color
         score_text = font.render(f"Score: {score.get_score()}", True, (255, 255, 255))
+        lives_text = font.render(f"Lives: {player.lives}", True, (255, 255, 255))
         screen.blit(score_text, (10, 10))
+        screen.blit(lives_text, (10, 50))
 
         # Refreshing the screen
         pygame.display.flip()

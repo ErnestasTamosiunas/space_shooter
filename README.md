@@ -1,9 +1,8 @@
 # Pygame Setup Guide
 
-## Step 1: Create Project Directory and Git Repository
+## Step 1: Clone the git repository into your local
 ```bash
-mkdir my_project && cd my_project
-git init
+git clone https://github.com/ErnestasTamosiunas/space_shooter.git
 ```
 
 ---
@@ -31,7 +30,7 @@ source venv/bin/activate
 
 ---
 
-## Step 4: Create `requirements.txt`
+## Step 4: Create `requirements.txt` (if it doesn't exist)
 ```bash
 echo "pygame==2.6.1" > requirements.txt
 ```
@@ -48,6 +47,12 @@ pip install -r requirements.txt
 ## Step 6: Verify Installation
 ```bash
 python3 -m pygame
+```
+
+## Step 7: Run game
+- While inside the root folder of this repository
+```bash
+python3 main.py
 ```
 
 ### Expected Output:

@@ -8,3 +8,6 @@ class Score():
 
     def increase_score(self):
         self.player_score += 1
+    
+    def __str__(self):
+        return f"{self.player_score}"

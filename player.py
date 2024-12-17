@@ -1,6 +1,7 @@
 from constants import *
 from circleshape import *
 from shot import *
+from score import Score
 
 class Player(CircleShape):
     # Player hitbox
@@ -11,6 +12,7 @@ class Player(CircleShape):
         self.rotation = 0
         self.shoot_timer = 0
         self.score = 0
+        self.lives = 3
     
     # Player appearance
     def triangle(self):
@@ -54,3 +56,15 @@ class Player(CircleShape):
         shot = Shot(self.position.x, self.position.y)
         # Set the shot's velocity
         shot.velocity = pygame.Vector2(0, 1).rotate(self.rotation) * PLAYER_SHOOT_SPEED
+
+    def revive(self, score):
+        if self.lives > 0:
+            self.lives -= 1
+            self.rotation = 0
+            self.x = 0
+            self.y = 0
+            self.position = PLAYER_START_POSITION
+        else:
+            print("Game over!")
+            print(f"Your final score is: {score}!")
+            exit()
